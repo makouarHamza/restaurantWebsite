@@ -9,6 +9,7 @@
 </x-app-layout> --}}
 
 @extends('admin.maindesgin');
+
 @section('dashboardAdmin')
 <h2>Admin Dashboard</h2>
 
