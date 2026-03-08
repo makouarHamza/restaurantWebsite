@@ -13,3 +13,6 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
 });
+// middleware protect admin pages;
+Route::get('adminfile', [UserController::class,'goTO'])->middleware('auth', 'admin');
+
