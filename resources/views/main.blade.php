@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with FoodHut landing page.">
     <meta name="author" content="Devcrud">
-    <title>FoodHut | Free Bootstrap 4.3.x template</title>
+    <title>Fez Restaurant | FOOD && DRINK</title>
    
     <!-- font icons -->
     <link rel="stylesheet" href="user/assets/vendors/themify-icons/css/themify-icons.css">
@@ -39,7 +39,7 @@
             </ul>
             <a class="navbar-brand m-auto" href="#">
                 <img src="user/assets/imgs/logo.svg" class="brand-img" alt="">
-                <span class="brand-txt">Food Hut</span>
+                <span class="brand-txt">Fez Restaurant</span>
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -95,7 +95,7 @@
     <!-- header -->
     <header id="home" class="header">
         <div class="overlay text-white text-center">
-            <h1 class="display-2 font-weight-bold my-3">Food Hut</h1>
+            <h1 class="display-2 font-weight-bold my-3">Fez Restaurant</h1>
             <h2 class="display-4 mb-5">Always fresh &amp; Delightful</h2>
             <a class="btn btn-lg btn-primary" href="#gallary">View Our gallary</a>
         </div>
