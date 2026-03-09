@@ -96,7 +96,7 @@
                     <div class="list-inline-item logout">
                         <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
-                            <input type="submit" value="logout"/>
+                            <input type="submit" class="btn btn-primary" value="logout"/>
                         </form>
                     </div>
                 </div>
