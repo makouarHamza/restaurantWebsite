@@ -27,10 +27,16 @@ class AdminController extends Controller
 
         $food->save();
 
-        if($image=$req->food_image && $food->save()){
-            $req->food_image->move('food_img',$imagename);
+        if ($image = $req->food_image && $food->save()) {
+            $req->food_image->move('food_img', $imagename);
         }
 
-        return redirect()->back()->with('success','Added Successfully!');
+        return redirect()->back()->with('success', 'Added Successfully!');
+    }
+
+    public function showFood()
+    {
+        $foods = Food::all();
+        return view('admin.showfood', compact('foods'));
     }
 }
