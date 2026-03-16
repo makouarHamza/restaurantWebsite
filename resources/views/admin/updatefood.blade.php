@@ -1,46 +1,82 @@
 @extends('admin.maindesgin')
 <base href="/public">
 @section('update_food')
-    <!-- Form Header -->
-    <div class="bg-blue-600 px-6 py-4" style="text-align: center; margin-left:250px">
-        <h2 class="text-xl font-semibold text-white">Update Food Item</h2>
-    </div>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
 
-    <!-- Form Content -->
-    <div class="p-4">
-        @if (session('update'))
-            <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-                {{ session('update') }}
-            </div>
-        @endif
+                <section class="card shadow-sm border-0">
 
-        <form action="{{ route('admin.postupdatefood',$food->id) }}" method="POST" enctype="multipart/form-data"
-            style="display: flex; flex-direction: column; margin-left: 600px; gap: 10px; height: 100vh; width: 400px;">
-            @csrf
-            <input type="text" name="food_name" value="{{ $food->food_name }}"
-                style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h2 class="card-title h5 mb-0 text-center text-uppercase">Add New Food Item</h2>
+                    </div>
 
-            <textarea name="food_details" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; min-height: 200px;">{{ $food->food_details }}</textarea>
+                    <div class="card-body p-4">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
 
-            <input type="number" name="food_price" value="{{ $food->food_price }}" min="0" step="1"
-                style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        {{-- Main form --}}
+                        <form action="{{ route('admin.postupdatefood', $food->id) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
 
-            <div style="margin-bottom: 5px;">
-                <div>
-                    <h3 style=" color: #666; margin-top: 5px; margin-bottom: 0;">Old Image</h3>
-                    <img style="width: 100px" src="{{ 'food_img/' . $food->food_image }}" alt="">
+                            <div class="mb-3">
+                                <label for="food_name" class="form-label fw-bold">Food Title</label>
+                                <input type="text" value="{{ $food->food_name }}" class="form-control" id="food_name"
+                                    name="food_name" placeholder="Enter food name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="food_details" class="form-label fw-bold">Description</label>
+                                <textarea class="form-control" id="food_details" name="food_details" rows="4"
+                                    placeholder="Describe the dish..." required>{{ $food->food_details }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="food_price" class="form-label fw-bold">Price ($)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" value="{{ $food->food_price }}" class="form-control"
+                                        id="food_price" name="food_price" step="0.01" min="0" placeholder="0.00" required>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Food Image</label>
+
+                                <div class="d-flex align-items-center border rounded p-2 mb-2 bg-light">
+                                    <div class="me-3 text-center">
+                                        <small class="d-block text-muted mb-1">Current</small>
+                                        <img src="{{ asset('food_img/' . $food->food_image) }}" alt="Current Image"
+                                            class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <label for="food_image" class="small text-muted">Upload new image to replace</label>
+                                        <input type="file" id="food_image" name="food_image"
+                                            class="form-control form-control-sm" accept="image/*">
+                                    </div>
+                                </div>
+                                <p class="form-text small text-muted">PNG, JPG or GIF (Max 10MB)</p>
+                            </div>
+
+
+
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="bi bi-arrow-repeat me-1"></i> Update Food Details
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <div class="text-center mt-3">
+                    <a href="{{ url()->previous() }}" class="text-decoration-none text-muted small">← Back to List</a>
                 </div>
-                <label style="font-size: 12px; color: #666; margin-top: 5px; margin-bottom: 0;" for="updateimage">update
-                    image for here!</label>
-                <input type="file" name="food_image" accept="image/*"
-                    style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 100%;">
-                <p style="font-size: 12px; color: #666; margin-top: 5px; margin-bottom: 0;">PNG, JPG or GIF (Max 10MB)</p>
             </div>
-
-            <button type="submit"
-                style="padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px;">
-                Update  Food
-            </button>
-        </form>
+        </div>
     </div>
 @endsection
