@@ -9,7 +9,7 @@
     <!-- Form Content -->
     <div class="p-4">
         @if (session('success'))
-            <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+            <div  class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
                 {{ session('success') }}
             </div>
         @endif

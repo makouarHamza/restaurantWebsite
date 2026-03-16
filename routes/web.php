@@ -18,4 +18,5 @@ Route::middleware([
 Route::get('/addfood',[AdminController::class,'addFood'])->middleware('auth','admin')->name('admin.addfood');
 Route::post('/addfood',[AdminController::class,'postAddFood'])->middleware('auth','admin')->name('admin.postaddfood');
 Route::get('/showfood',[AdminController::class,'showFood'])->middleware('auth','admin')->name('admin.showfood');
+Route::get('/deletefood/{id}',[AdminController::class,'deleteFood'])->middleware('auth','admin')->name('admin.deletefood');
 
