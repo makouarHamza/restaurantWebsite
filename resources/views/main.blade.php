@@ -228,37 +228,9 @@
 
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
+                {{-- get dynamic foods information "Home" --}}
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card bg-transparent border my-3 my-md-0">
-                            <img src="user/assets/imgs/blog-1.jpg" alt="template by DevCRID http://www.devcrud.com/" class="rounded-0 card-img-top mg-responsive">
-                            <div class="card-body">
-                                <h1 class="text-center mb-4"><a href="#" class="badge badge-primary">$5</a></h1>
-                                <h4 class="pt20 pb20">Reiciendis Laborum </h4>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa provident illum officiis fugit laudantium voluptatem sit iste delectus qui ex. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-transparent border my-3 my-md-0">
-                            <img src="user/assets/imgs/blog-2.jpg" alt="template by DevCRID http://www.devcrud.com/" class="rounded-0 card-img-top mg-responsive">
-                            <div class="card-body">
-                                <h1 class="text-center mb-4"><a href="#" class="badge badge-primary">$12</a></h1>
-                                <h4 class="pt20 pb20">Adipisci Totam</h4>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa provident illum officiis fugit laudantium voluptatem sit iste delectus qui ex. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-transparent border my-3 my-md-0">
-                            <img src="user/assets/imgs/blog-3.jpg" alt="template by DevCRID http://www.devcrud.com/" class="rounded-0 card-img-top mg-responsive">
-                            <div class="card-body">
-                                <h1 class="text-center mb-4"><a href="#" class="badge badge-primary">$8</a></h1>
-                                <h4 class="pt20 pb20">Dicta Deserunt</h4>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa provident illum officiis fugit laudantium voluptatem sit iste delectus qui ex. </p>
-                            </div>
-                        </div>
-                    </div>
+                    @yield('menu_items')
                 </div>
             </div>
         </div>
