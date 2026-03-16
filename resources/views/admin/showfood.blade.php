@@ -25,7 +25,7 @@
                             src="{{ 'food_img/' . $food->food_image }}" alt="{{ $food->food_name }}"></td>
                     <td style="border: 1px solid #ddd; padding: 8px;">{{ $food->food_price }}</td>
                     <td style="border: 1px solid #ddd; padding: 8px;">
-                        <a href="#"
+                        <a href="{{ route('admin.updatefood', $food->id) }}"
                             style="color: #2196F3; text-decoration: none; padding: 4px 8px; border-radius: 4px; background-color: #e7f3ff">Update</a>
                         <a href="{{ route('admin.deletefood', $food->id) }}" onclick="return confirm('Are you sure ?')"
                             style="color: #f44336; text-decoration: none; padding: 4px 8px; border-radius: 4px; background-color: #ffebee">Delete</a>

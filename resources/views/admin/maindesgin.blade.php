@@ -147,6 +147,7 @@
             @yield('dashboardAdmin')
             @yield('addfood')
             @yield('show_food')
+            @yield('update_food')
             <footer class="footer">
                 <div class="footer__block block no-margin-bottom">
                     <div class="container-fluid text-center">
