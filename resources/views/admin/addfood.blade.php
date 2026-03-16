@@ -1,41 +1,69 @@
 @extends('admin.maindesgin')
 
 @section('addfood')
-    <!-- Form Header -->
-    <div class="bg-blue-600 px-6 py-4" style="text-align: center; margin-left:250px">
-        <h2 class="text-xl font-semibold text-white">Add New Food Items</h2>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            
+            <section class="card shadow-sm border-0">
+                
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="card-title h5 mb-0 text-center text-uppercase">Add New Food Item</h2>
+                </div>
+
+                <div class="card-body p-4">
+                    {{-- Success Message --}}
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    {{-- Main Form --}}
+                    <form action="{{ route('admin.postaddfood') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        
+                        <div class="mb-3">
+                            <label for="food_name" class="form-label fw-bold">Food Title</label>
+                            <input type="text" class="form-control" id="food_name" name="food_name" 
+                                   placeholder="Enter food name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="food_details" class="form-label fw-bold">Description</label>
+                            <textarea class="form-control" id="food_details" name="food_details" 
+                                      rows="4" placeholder="Describe the dish..." required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="food_price" class="form-label fw-bold">Price ($)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="food_price" name="food_price" 
+                                       step="0.01" min="0" placeholder="0.00" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="food_image" class="form-label fw-bold">Food Image</label>
+                            <input type="file" class="form-control" id="food_image" name="food_image" 
+                                   accept="image/*" required>
+                            <div class="form-text text-muted">
+                                Accepted formats: PNG, JPG, GIF (Max 10MB)
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="bi bi-plus-lg me-1"></i> Add Food Item
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+        </div>
     </div>
-
-    <!-- Form Content -->
-    <div class="p-4">
-        @if (session('success'))
-            <div  class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <form action="{{ route('admin.postaddfood') }}" method="POST" enctype="multipart/form-data"
-            style="display: flex; flex-direction: column; margin-left: 600px; gap: 10px; height: 100vh; width: 400px;">
-            @csrf
-            <input type="text" name="food_name" placeholder="Food Title" required
-                style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-
-            <textarea name="food_details" placeholder="Description" required
-                style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; min-height: 200px;"></textarea>
-
-            <input type="number" name="food_price" placeholder="Price" min="0" step="1" required
-                style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-
-            <div style="margin-bottom: 5px;">
-                <input type="file" name="food_image" accept="image/*" required
-                    style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 100%;">
-                <p style="font-size: 12px; color: #666; margin-top: 5px; margin-bottom: 0;">PNG, JPG or GIF (Max 10MB)</p>
-            </div>
-
-            <button type="submit"
-                style="padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px;">
-                Add Food
-            </button>
-        </form>
-    </div>
+</div>
 @endsection
