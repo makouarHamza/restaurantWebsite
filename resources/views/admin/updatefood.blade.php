@@ -8,7 +8,7 @@
                 <section class="card shadow-sm border-0">
 
                     <div class="card-header bg-primary text-white py-3">
-                        <h2 class="card-title h5 mb-0 text-center text-uppercase">Add New Food Item</h2>
+                        <h2 class="card-title h5 mb-0 text-center text-uppercase">Update Food Item</h2>
                     </div>
 
                     <div class="card-body p-4">
