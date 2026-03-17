@@ -28,7 +28,7 @@ class UserController extends Controller
             $cart->food_name = $food->food_name;
             $cart->food_details = $food->food_details;
             $cart->food_image = $food->food_image;
-            $cart->food_quantity = $food->quantity;
+            $cart->food_quantity = $req->quantity;
             $price = $cart->food_quantity * $food->food_price;
             //this price is from food table
             $cart->food_price = $price;
@@ -38,6 +38,13 @@ class UserController extends Controller
                 return redirect()->back()->with('cart_message', 'food added to the cart');
             }
         }
+    }
+
+    public function foodCart(){
+        $current_auth = Auth::id();
+        $cart_food =  FoodCart::where('userID',$current_auth)->get();
+
+        return view('show_cart',compact('cart_food'));
     }
 
 

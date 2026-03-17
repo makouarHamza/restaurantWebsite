@@ -13,6 +13,7 @@ Route::middleware([
 ])->group(function () {
 Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
 Route::post('/addtocart', [UserController::class,'addToCart'])->name('addtocart');
+Route::get('/foodcart', [UserController::class,'FoodCart'])->name('foodcart');
 });
 
 Route::get('/addfood',[AdminController::class,'addFood'])->middleware('auth','admin')->name('admin.addfood');

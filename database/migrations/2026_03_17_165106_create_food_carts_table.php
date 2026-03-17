@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('userID');
             $table->integer('food_id');
             $table->string('food_name',50)->nullable();
-            $table->string('food_details')->nullable();
+            $table->text('food_details')->nullable();
             $table->string('food_image',100)->nullable();
             $table->integer('food_quantity')->nullable();
             $table->integer('food_price')->nullable();
