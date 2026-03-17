@@ -11,7 +11,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
+Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
+Route::post('/addtocart', [UserController::class,'addToCart'])->name('addtocart');
 });
 
 Route::get('/addfood',[AdminController::class,'addFood'])->middleware('auth','admin')->name('admin.addfood');
