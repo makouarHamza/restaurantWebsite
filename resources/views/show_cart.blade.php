@@ -22,6 +22,9 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $total_price = 0;
+                @endphp
                 @foreach ($cart_food as $food)
                     <tr>
                         <td style="border: 1px solid #ddd; padding: 8px;">{{ $food->food_name }}</td>
@@ -40,9 +43,13 @@
                         </td>
 
                     </tr>
+                    @php
+                        $total_price = $total_price + $food->food_price ;
+                    @endphp
                 @endforeach
 
             </tbody>
         </table>
+        <h1>Total price is: {{ $total_price }} DH</h1>
     </div>
 @endsection
