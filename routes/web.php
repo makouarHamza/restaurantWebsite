@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [UserController::class,'index'])->name('home');
+Route::get('/', [UserController::class,'index']);
 
 Route::middleware([
     'auth:sanctum',
@@ -14,6 +14,7 @@ Route::middleware([
 Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
 Route::post('/addtocart', [UserController::class,'addToCart'])->name('addtocart');
 Route::get('/foodcart', [UserController::class,'FoodCart'])->name('foodcart');
+Route::get('/foodcart/{id}', [UserController::class,'removeCart'])->name('delete_cart');
 });
 
 Route::get('/addfood',[AdminController::class,'addFood'])->middleware('auth','admin')->name('admin.addfood');

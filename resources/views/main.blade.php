@@ -261,9 +261,7 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
                 {{-- get dynamic foods information "Home" --}}
-                <div class="row">
                     @yield('menu_items')
-                </div>
             </div>
         </div>
     </div>

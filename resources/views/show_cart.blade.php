@@ -33,7 +33,7 @@
                         <td style="border: 1px solid #ddd; padding: 8px;">{{ $food->food_quantity }}</td>
                         <td style="border: 1px solid #ddd; padding: 8px;">{{ $food->food_price }}</td>
                         <td style="border: 1px solid #ddd; padding: 8px;">
-                            <a href="" onclick="return confirm('Are you sure ?')"
+                            <a href="{{ route('delete_cart',$food->id) }}" onclick="return confirm('Are you sure ?')"
                                 style="color: #f44336; text-decoration: none; padding: 4px 8px; border-radius: 4px; background-color: #ffebee">
                                 Remove
                             </a>

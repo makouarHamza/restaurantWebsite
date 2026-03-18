@@ -35,7 +35,8 @@ class UserController extends Controller
 
             $cart->save();
             if ($cart->save()) {
-                return redirect()->back()->with('cart_message', 'food added to the cart');
+                // return redirect()->back()->with('cart_message', 'food added to the cart');
+                return redirect('/#blog')->with('cart_message', 'food added to the cart');
             }
         }
     }
@@ -47,6 +48,11 @@ class UserController extends Controller
         return view('show_cart',compact('cart_food'));
     }
 
+    public function removeCart($id){
+        $remove_food = FoodCart::findOrFail($id);
+        $remove_food->delete();
+        return redirect()->back()->with('danger', 'Deleted  Successfully!');
+    }
 
     public function goTO()
     {
