@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#about">About</a>
@@ -46,7 +46,7 @@
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#blog">Blog<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#menu">Menu<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#testmonial">Reviews</a>
@@ -253,8 +253,8 @@
     </div>
 
     <!-- BLOG Section  -->
-    <div id="blog" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
-        <h2 class="section-title py-5">EVENTS AT THE FOOD HUT</h2>
+    <div id="menu" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
+        <h2 class="section-title py-5">Our Menu</h2>
 
 
 

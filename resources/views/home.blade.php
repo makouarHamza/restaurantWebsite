@@ -8,7 +8,7 @@
     @endif
 
     <div class="row">
-        @foreach ($foods as $food)
+        @forelse ($foods as $food)
             <div class="col-md-4 mb-4">
 
                 <div class="card bg-transparent border h-100 shadow-sm">
@@ -36,8 +36,8 @@
                                 <input type="hidden" name="food_id" value="{{ $food->id }}">
                                 <div class="form-group">
                                     <label for="quantity">Quantity:</label>
-                                    <input type="number" class="form-control" id="quantity" name="quantity" value="1"
-                                        min="1" style="background-color: rgba(255, 255, 255, 0.1); color: white;">
+                                    <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1"
+                                        style="background-color: rgba(255, 255, 255, 0.1); color: white;">
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block">
                                     <i class="fas fa-shopping-cart"></i>
@@ -49,6 +49,17 @@
                     </div>
                 </div>
             </div>
-    
-    @endforeach
+        @empty
+            {{-- This displays if the $foods collection is empty --}}
+            <div class="col-12 my-5">
+                <div class="text-center p-5 border rounded bg-light shadow-sm">
+                    <div class="mb-3">
+                        <i class="fas fa-utensils fa-3x text-muted"></i>
+                    </div>
+                    <h3 class="text-secondary">No food options available</h3>
+                    <p class="text-muted">We couldn't find any dishes right now. Please check back later!</p>
+                    <a href="{{ url('/') }}" class="btn btn-primary mt-3">Refresh Menu</a>
+                </div>
+            </div>
+        @endforelse
 @endsection
