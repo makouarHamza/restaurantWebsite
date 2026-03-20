@@ -63,3 +63,31 @@
             </div>
         @endforelse
 @endsection
+
+    @section('gallery')
+        <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
+            <h2 class="section-title">OUR Gallary</h2>
+        </div>
+        <div class="gallary row">
+            @forelse($foods as $item) {{-- Assuming your variable is $galleryItems --}}
+                <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+                    <img src="{{ asset('food_img/' . $item->food_image) }}" alt="Gallery Image" class="gallary-img w-100 h-100">
+                    <div class="gallary-overlay">
+                        <div class="gallary-info">
+                            <h5 class="text-white text-capitalize mb-0">{{ $item->food_name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="col-12 wow fadeIn">
+                    <div class="text-center p-5 my-3 rounded"
+                        style="border: 2px dashed rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);">
+                        <div class="mb-3">
+                            <i class="ti-image" style="font-size: 3rem; color: rgba(255,255,255,0.3);"></i>
+                        </div>
+                        <h5 class="text-white">Our Gallery is Growing</h5>
+                        <p class="text-muted">New photos of our delicious dishes are coming soon!</p>
+                    </div>
+                </div>
+            @endforelse
+    @endsection
