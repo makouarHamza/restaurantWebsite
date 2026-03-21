@@ -36,7 +36,7 @@ class UserController extends Controller
             $cart->save();
             if ($cart->save()) {
                 // return redirect()->back()->with('cart_message', 'food added to the cart');
-                return redirect('/#blog')->with('cart_message', 'food added to the cart');
+                return redirect('/#menu')->with('cart_message', 'food added to the cart');
             }
         }
     }
