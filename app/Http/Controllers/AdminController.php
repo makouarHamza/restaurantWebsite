@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function postAddFood(Request $req)
     {
         $req->validate([
-            'food_image' =>'required|image|mimes:png,jpg,jpeg,gif|max:10240',
+            'food_image' => 'required|image|mimes:png,jpg,jpeg,gif|max:10240',
             'food_price' => 'required|numeric|min:0',
             'food_name' => 'required|min:2|string',
             'food_details' => 'required|min:8',
@@ -62,6 +62,13 @@ class AdminController extends Controller
 
     public function postUpdateFood(Request $req, $id)
     {
+        $req->validate([
+            'food_image' => 'image|mimes:png,jpg,jpeg,gif|max:10240',
+            'food_price' => 'required|numeric|min:0',
+            'food_name' => 'required|min:2|string',
+            'food_details' => 'required|min:8',
+        ]);
+
         $food = Food::findOrFail($id);
         $food->food_name = $req->food_name;
         $food->food_details = $req->food_details;

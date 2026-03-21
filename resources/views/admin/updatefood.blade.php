@@ -12,9 +12,9 @@
                     </div>
 
                     <div class="card-body p-4">
-                        @if (session('success'))
+                        @if (session('update'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+                                <i class="bi bi-check-circle-fill me-2"></i> {{ session('update') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
@@ -26,21 +26,35 @@
 
                             <div class="mb-3">
                                 <label for="food_name" class="form-label fw-bold">Food Title</label>
-                                <input type="text" value="{{ $food->food_name }}" class="form-control" id="food_name"
-                                    name="food_name" placeholder="Enter food name" required>
+                                <input type="text" value="{{ $food->food_name }}" class="form-control @error('food_name') is-invalid
+                                @enderror" id="food_name" name="food_name" placeholder="Enter food name" required>
+                                @error('food_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="food_details" class="form-label fw-bold">Description</label>
-                                <textarea class="form-control" id="food_details" name="food_details" rows="4"
-                                    placeholder="Describe the dish..." required>{{ $food->food_details }}</textarea>
+                                <textarea class="form-control @error('food_details') is-invalid
+                                @enderror" id="food_details" name="food_details" rows="4"
+                                    placeholder="Describe the dish..."
+                                    required>{{ old('food_details') ? old('food_details') : $food->food_details }}</textarea>
+                                @error('food_details')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="food_price" class="form-label fw-bold">Price ($)</label>
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
-                                    <input type="number" value="{{ $food->food_price }}" class="form-control"
-                                        id="food_price" name="food_price" step="0.01" min="0" placeholder="0.00" required>
+                                    <input type="number"
+                                        value="{{ old('food_price') ? old('food_price') : $food->food_price }}" class="form-control @error('food_price') is-invalid
+                                        @enderror" id="food_price" name="food_price" step="0.01" min="0" placeholder="0.00"
+                                        required>
                                 </div>
+                                @error('food_price')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+
                             </div>
 
 
@@ -55,9 +69,13 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <label for="food_image" class="small text-muted">Upload new image to replace</label>
-                                        <input type="file" id="food_image" name="food_image"
-                                            class="form-control form-control-sm" accept="image/*">
+                                        <input type="file" id="food_image" name="food_image" class="form-control form-control-sm @error('food_image') is-invalid
+                                        @enderror" accept="image/*">
+                                        @error('food_image')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
+
                                 </div>
                                 <p class="form-text small text-muted">PNG, JPG or GIF (Max 10MB)</p>
                             </div>
