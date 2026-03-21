@@ -26,29 +26,50 @@
                         
                         <div class="mb-3">
                             <label for="food_name" class="form-label fw-bold">Food Title</label>
-                            <input type="text" class="form-control" id="food_name" name="food_name" 
+                            <input type="text" value="{{ old('food_name') }}" class="form-control @error('food_name') is-invalid @enderror" id="food_name" name="food_name" 
                                    placeholder="Enter food name" required>
+                                   
+                                   @error('food_name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="food_details" class="form-label fw-bold">Description</label>
-                            <textarea class="form-control" id="food_details" name="food_details" 
-                                      rows="4" placeholder="Describe the dish..." required></textarea>
+                            <textarea  class="form-control @error('food_details') is-invalid    
+                                @enderror" id="food_details" name="food_details" 
+                                rows="4" placeholder="Describe the dish..." required>{{ old('food_details') }}</textarea>
+                                @error('food_details')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="food_price" class="form-label fw-bold">Price ($)</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="number" class="form-control" id="food_price" name="food_price" 
-                                       step="0.01" min="0" placeholder="0.00" required>
+                                <input type="number" value="{{ old('food_price') }}" class="form-control @error('food_price') is-invalid
+                                        @enderror" id="food_price" name="food_price" 
+                                       min="0" step="0.01"  placeholder="0.00" required>
+                                       
                             </div>
+                            @error('food_price')
+                                {{ $message }}
+                            @enderror
                         </div>
 
                         <div class="mb-4">
                             <label for="food_image" class="form-label fw-bold">Food Image</label>
-                            <input type="file" class="form-control" id="food_image" name="food_image" 
-                                   accept="image/*" required>
+                            <input type="file" class="form-control @error('food_image') is-invalid
+                            @enderror" id="food_image" name="food_image" 
+                                   accept="image/*"  required>
+                                   @error('food_image')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                             <div class="form-text text-muted">
                                 Accepted formats: PNG, JPG, GIF (Max 10MB)
                             </div>
